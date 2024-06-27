@@ -4,8 +4,6 @@ namespace RuleHelper
     public partial class frmMain : Form
     {
         private string _baseUrl = string.Empty;
-        private Task _setThumbTask;
-        private CancellationTokenSource _setThumbCancel;
 
         private Size ThumbnailSize = new Size(128, 128);
 
@@ -39,6 +37,8 @@ namespace RuleHelper
             int pid = txtUrl.Text.LastIndexOf("&pid=");
             if (pid != -1)
                 _baseUrl = txtUrl.Text.Substring(0, pid);
+            else
+                _baseUrl = txtUrl.Text;
 
             // 썸네일 / 페이지 설정
             SetThumbnail(txtUrl.Text);
@@ -103,19 +103,13 @@ namespace RuleHelper
             lstvThumbnail.Items.Clear();
             ImglThumbnail.Images.Clear();
 
-            if (_setThumbTask != null && _setThumbCancel != null)
-                _setThumbCancel.Cancel();
-
-            _setThumbCancel = new CancellationTokenSource();
-            _setThumbTask = Task.Run(async () =>
+            Task.Run(async () =>
             {
                 // 썸네일 표시
                 string[] thumbs = await RuxxHelper.Instance.GetThumbnailLinks(url);
                 string[] details = await RuxxHelper.Instance.GetDetailPageLinks(url);
                 for (int i = 0; i < thumbs.Length; i++)
                 {
-                    _setThumbCancel.Token.ThrowIfCancellationRequested();
-
                     string thumbUrl = thumbs[i];
                     string detailPageUrl = details[i];
 
@@ -136,7 +130,8 @@ namespace RuleHelper
                         lstvThumbnail.Items.Add(item);
                     }));
                 }
-            }, _setThumbCancel.Token);
+            });
+            //}, _setThumbCancel.Token);
         }
 
         /// <summary>
@@ -149,13 +144,13 @@ namespace RuleHelper
                 // 페이지 표시
                 int lastImageIndex = await RuxxHelper.Instance.GetLastPageIndex(txtUrl.Text);
                 int pageCount = lastImageIndex / 42 + 1;
-                txtpagination.Text = $"[page] {1}-{pageCount}";
-                txtGotoPage.Text = "1";
+                object[] pages = Enumerable.Range(1, pageCount).Cast<object>().ToArray();
 
                 Invoke((Action)(() =>
                 {
+                    txtpagination.Text = $"[page] {1}-{pageCount}";
+                    txtGotoPage.Text = "1";
                     cmbGotoPage.Items.Clear();
-                    object[] pages = Enumerable.Range(1, pageCount).Cast<object>().ToArray();
                     cmbGotoPage.Items.AddRange(pages);
                 }));
             });
