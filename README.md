@@ -10,6 +10,11 @@ Rule34 Helper를 사용하려는 당신에게.
 ---
 
 ## 사용법
+
+# 중요
+**이 프로그램은 자체 VPN이 없소. 이용자가 자비로 VPN을 구매하여 사용하거나 해야하오.
+크롬 등에서 사용되는 확장프로그램이 아니라 컴퓨터 자체의 IP가 변경되는 VPN 프로그램을 쓰던가, 네트워크 설정을 변경해야 하오.**
+
 1. 파일을 다운로드한다. (경로: bin/Ruxx_Helper_x.x.x)
 2. 프로그램을 실행한다. (경로: bin/Ruxx_Helper_x.x.x/RuleHelper.exe)  
 <img src="https://github.com/playeruknowns/Ruxx-Helper/assets/173974306/6b33d367-1fad-4969-bec1-618f21d51d8b" width="70%" height="70%"></img>
