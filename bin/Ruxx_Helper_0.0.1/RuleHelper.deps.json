@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "RuleHelper/1.0.0": {
+        "dependencies": {
+          "HtmlAgilityPack": "1.11.61",
+          "ImageGlass.Tools": "1.9070.0"
+        },
+        "runtime": {
+          "RuleHelper.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.61": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.61.0",
+            "fileVersion": "1.11.61.0"
+          }
+        }
+      },
+      "ImageGlass.Tools/1.9070.0": {
+        "runtime": {
+          "lib/net8.0-windows7.0/ImageGlass.Tools.dll": {
+            "assemblyVersion": "1.9070.0.0",
+            "fileVersion": "1.9070.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RuleHelper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HtmlAgilityPack/1.11.61": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hqZASeEFHS9quHvfZSwaULoAJLWkOYVPiQjc3P9J4pQS8vSYzrP3bxe04Vm7vYYuxwbQhq9hCSVvZVLTyRaNaQ==",
+      "path": "htmlagilitypack/1.11.61",
+      "hashPath": "htmlagilitypack.1.11.61.nupkg.sha512"
+    },
+    "ImageGlass.Tools/1.9070.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QBBD20QnzTyYhrv/Ao3pXY6ZhzmnFuI6Z8HXwnt8CPlEJJ+aBN1J4nw455/dHaoelqBg4YFPSNdNidOqvFvwVg==",
+      "path": "imageglass.tools/1.9070.0",
+      "hashPath": "imageglass.tools.1.9070.0.nupkg.sha512"
+    }
+  }
+}
